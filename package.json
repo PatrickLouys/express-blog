@@ -1,0 +1,9 @@
+{
+  "name": "express-blog",
+  "description": "experimental project",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.9"
+  }
+}
