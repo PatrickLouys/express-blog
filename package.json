@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "4.9"
+    "express": "4.9",
+    "markdown": "0.5"
   }
 }
