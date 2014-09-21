@@ -3,7 +3,7 @@ var app = express();
 var markdown = require( "markdown" ).markdown;
 var fs = require('fs');
 
-app.get('/:slug', function(req, res){
+var showPage = function(req, res){
     var fileName = 'pages/' + req.params.slug + '.md';
     fs.readFile(fileName, 'utf8', function (err, data) {
         if (err) {
@@ -11,7 +11,10 @@ app.get('/:slug', function(req, res){
         }
         return res.send(markdown.toHTML(data));
     });
-});
+}
+
+app.get('/:slug', showPage);
+
 
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
