@@ -7,15 +7,17 @@ var Datastore = require('nedb');
 var db = {};
 db.pages = new Datastore({ filename: 'storage/pages.db', autoload: true });
 
-
-
-var showPage = function (req, res) {
-    var fileName = 'pages/' + req.params.slug + '.md';
-    fs.readFile(fileName, 'utf8', function (err, data) {
+var getPage = function (req, res) {
+    db.pages.findOne({ "slug": req.params.slug }, function (err, doc) {
         if (err) {
+            return res.status(500).send('500 - Error');
+        }
+
+        if (doc === null) {
             return res.status(404).send('404 - Page not found');
         }
-        return res.send(markdown.toHTML(data));
+
+        return res.send(markdown.toHTML(doc.content));
     });
 }
 
@@ -30,7 +32,7 @@ var addPage = function (req, res) {
 }
 
 app.get('/admin/add', addPage);
-app.get('/:slug', showPage);
+app.get('/:slug', getPage);
 
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
