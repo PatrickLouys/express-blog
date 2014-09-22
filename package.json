@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "express": "4.9",
-    "markdown": "0.5"
+    "markdown": "0.5",
+    "nedb": "0.11"
   }
 }
