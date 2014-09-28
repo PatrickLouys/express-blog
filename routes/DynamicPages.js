@@ -1,7 +1,6 @@
 var Datastore = require('nedb');
 var markdown = require( "markdown" ).markdown;
 
-
 exports.getPage = function (req, res) {
     var db = new Datastore({ filename: 'storage/pages.db', autoload: true });
     db.findOne({ "slug": req.params.slug }, function (err, doc) {
@@ -19,11 +18,11 @@ exports.getPage = function (req, res) {
 
 exports.addPage = function (req, res) {
     var db = new Datastore({ filename: 'storage/pages.db', autoload: true });
-    var doc = { slug: 'hello'
+    var doc = { slug: 'twoss'
                , createdAt: new Date()
-               , content: '## This is an example markdown page stored in the db.'
+               , content: '## Second page.'
                };
 
-    db.pages.insert(doc);
+    db.insert(doc);
     return res.send('inserted');
 }
