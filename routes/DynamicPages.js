@@ -18,7 +18,7 @@ exports.getPage = function (req, res) {
 
 exports.addPage = function (req, res) {
     var db = new Datastore({ filename: 'storage/pages.db', autoload: true });
-    var doc = { slug: 'twoss'
+    var doc = { slug: 'two'
                , createdAt: new Date()
                , content: '## Second page.'
                };
