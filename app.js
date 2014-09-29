@@ -3,6 +3,7 @@ var app = express();
 var Datastore = require('nedb');
 var staticPages = require('./routes/StaticPages.js');
 var dynamicPages = require('./routes/DynamicPages.js');
+var admin = require('./routes/Admin.js');
 var basicAuth = require('basic-auth');
 
 var auth = function (req, res, next) {
@@ -25,6 +26,7 @@ var auth = function (req, res, next) {
 };
 
 app.get('/', staticPages.getHomepage);
+app.get('/admin/pages', auth, admin.showPages);
 app.get('/admin/add', auth, dynamicPages.addPage);
 app.get('/:slug', dynamicPages.getPage);
 
