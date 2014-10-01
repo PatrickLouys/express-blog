@@ -7,6 +7,7 @@
     "express": "4.9",
     "markdown": "0.5",
     "nedb": "0.11",
-    "basic-auth": "1.0"
+    "basic-auth": "1.0",
+    "jade": "1.7"
   }
 }

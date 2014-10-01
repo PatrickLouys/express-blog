@@ -6,6 +6,11 @@ var dynamicPages = require('./routes/DynamicPages.js');
 var admin = require('./routes/Admin.js');
 var basicAuth = require('basic-auth');
 
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/views');
+
+app.use(express.static(__dirname + '/public'));
+
 var auth = function (req, res, next) {
     function unauthorized(res) {
       res.set('WWW-Authenticate', 'Basic realm=Authorization Required');

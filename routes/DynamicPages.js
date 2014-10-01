@@ -12,7 +12,8 @@ exports.getPage = function (req, res) {
             return res.status(404).send('404 - Page not found');
         }
 
-        return res.send(markdown.toHTML(doc.content));
+        var content = markdown.toHTML(doc.content);
+        return res.render('page' ,{content: content});
     });
 }
 

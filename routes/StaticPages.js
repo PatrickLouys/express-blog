@@ -13,6 +13,6 @@ exports.getHomepage = function (req, res) {
             content = content + '<br><a href="/' + docs[key].slug + '">' + docs[key].slug + '</a>';
         }
 
-        return res.send(content);
+        return res.render('page', {content: content});
     });
 }
