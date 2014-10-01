@@ -8,11 +8,6 @@ exports.getHomepage = function (req, res) {
             return res.status(500).send('500 - Error');
         }
 
-        var content = '<h1>Homepage</h1>';
-        for (var key in docs) {
-            content = content + '<br><a href="/' + docs[key].slug + '">' + docs[key].slug + '</a>';
-        }
-
-        return res.render('page', {content: content});
+        return res.render('index', {pages: docs});
     });
 }
