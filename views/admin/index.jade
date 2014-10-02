@@ -2,8 +2,10 @@ extends layout
 
 block content
     div.container
+        h1
+            | Manage pages
         for page in pages
             p
-                a(href="/" + page.slug) #{page.slug}
+                a(href="/admin/pages/edit/" + page.slug) #{page.slug}
         else
             p no pages available
