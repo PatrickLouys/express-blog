@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    div.container
+        for page in pages
+            p
+                a(href="/" + page.slug) #{page.slug}
+        else
+            p no pages available

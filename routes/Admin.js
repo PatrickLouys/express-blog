@@ -12,6 +12,6 @@ exports.showPages = function (req, res) {
             content = content + '<br><a href="/admin/pages/edit/' + docs[key].slug + '">Edit ' + docs[key].slug + '</a>';
         }
 
-        return res.send(content);
+        return res.send('admin/index', {content: content});
     });
 }
