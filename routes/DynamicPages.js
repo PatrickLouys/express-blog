@@ -16,14 +16,3 @@ exports.getPage = function (req, res) {
         return res.render('page' ,{content: content});
     });
 }
-
-exports.addPage = function (req, res) {
-    var db = new Datastore({ filename: 'storage/pages.db', autoload: true });
-    var doc = { slug: 'two'
-               , createdAt: new Date()
-               , content: '## Second page.'
-               };
-
-    db.insert(doc);
-    return res.send('inserted');
-}

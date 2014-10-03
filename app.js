@@ -32,7 +32,8 @@ var auth = function (req, res, next) {
 
 app.get('/', staticPages.getHomepage);
 app.get('/admin/pages', auth, admin.showPages);
-app.get('/admin/add', auth, dynamicPages.addPage);
+app.get('/admin/pages/edit/:slug', admin.editPage);
+app.get('/admin/pages/add', auth, admin.addPage);
 app.get('/:slug', dynamicPages.getPage);
 
 var server = app.listen(3000, function() {
