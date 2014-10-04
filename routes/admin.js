@@ -1,8 +1,10 @@
 var Datastore = require('nedb');
-var db = new Datastore({ filename: 'storage/pages.db', autoload: true });
+var getDb = function() {
+    return new Datastore({ filename: 'storage/pages.db', autoload: true });
+}
 
 exports.showPages = function (req, res) {
-    db.find({}, function (err, docs) {
+    getDb().find({}, function (err, docs) {
         if (err) {
             return res.status(500).send('500 - Error');
         }
@@ -12,7 +14,7 @@ exports.showPages = function (req, res) {
 }
 
 exports.editPage = function (req, res) {
-    db.findOne({ "slug": req.params.slug }, function (err, doc) {
+    getDb().findOne({ "slug": req.params.slug }, function (err, doc) {
         if (err) {
             return res.status(500).send('500 - Error');
         }
@@ -31,6 +33,6 @@ exports.addPage = function (req, res) {
                , content: '## Second page.'
                };
 
-    db.insert(doc);
+    getDb().insert(doc);
     return res.send('inserted');
 }
